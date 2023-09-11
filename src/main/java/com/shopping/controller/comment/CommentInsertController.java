@@ -9,7 +9,7 @@ import com.shopping.model.bean.Comment;
 import com.shopping.model.dao.CommentDao;
 
 public class CommentInsertController extends SuperClass{
-	@Override // 부모 글번호에 대하여 로그인한 사람이 댓글을 작성하는 로직입니다.
+	@Override // 부모 글번호에 대하여 로그인한 사람이 댓글을 작성하는 로직입니다.////
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doPost(request, response);
 		
