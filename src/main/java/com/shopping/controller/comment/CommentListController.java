@@ -24,7 +24,7 @@ public class CommentListController extends SuperClass{
 		
 		try {
 			comments = dao.GetDataByPk(no);
-			System.out.println(no + "번글에 대한 댓글 갯수 : " + comments.size());
+			System.out.println(no + "번글에 대한 댓글 갯수 : " + comments.size());//f
 			
 			JSONArray jsArr = new JSONArray(); // JSONArray : json 데이터를담을 수 있는 배열
 			
