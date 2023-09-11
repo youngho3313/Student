@@ -1,0 +1,6 @@
+# setting2.txt
+location=잠실종합운동장
+supporter=서울시
+capacity=200
+email=seoulsupport@gmail.com
+phone=0212345678
