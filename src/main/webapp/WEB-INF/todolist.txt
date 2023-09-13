@@ -12,6 +12,7 @@ boList=com.shopping.controller.board.BoardListController
 boDetail=com.shopping.controller.board.BoardDetailController
 boUpdate=com.shopping.controller.board.BoardUpdateController
 boReply=com.shopping.controller.board.BoardReplyController
+boEmoticon=com.shopping.controller.board.BoardEmoticonController
 # product section
 prList=com.shopping.controller.product.ProductListController
 prInsert=com.shopping.controller.product.ProductInsertController
@@ -20,3 +21,11 @@ prUpdate=com.shopping.controller.product.ProductUpdateController
 # comment section
 cmList=com.shopping.controller.comment.CommentListController
 cmInsert=com.shopping.controller.comment.CommentInsertController
+cmDeleteInsert=com.shopping.controller.comment.CommentDeleteController
+# view section
+vwList=com.shopping.controller.view.ViewListController
+vwExam01=com.shopping.controller.view.View01Controller
+vwExam02=com.shopping.controller.view.View02Controller
+vwExam03=com.shopping.controller.view.View03Controller
+vwExam04=com.shopping.controller.view.View04Controller
+vwExam05=com.shopping.controller.view.View05Controller

@@ -9,6 +9,26 @@ import com.shopping.model.bean.Board;
 import com.shopping.utility.Paging;
 
 public class BoardDao extends SuperDao{
+	public int UpdateEmotion(int no, String columnName) throws Exception{
+		String sql =  " update boards set " + columnName + "=" + columnName + " + 1 " ;
+		sql += " where no = ? " ;
+		PreparedStatement pstmt = null;
+		
+		int cnt = -1 ;
+		conn = super.getConnection();
+		conn.setAutoCommit(false);
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, no);
+		
+		cnt = pstmt.executeUpdate() ;
+		
+		conn.commit();
+		
+		if(pstmt!=null) {pstmt.close();}
+		if(conn!=null) {conn.close();}
+		
+		return cnt;
+	}
 	
 	public int ReplyData(Board bean, Integer orderno) throws Exception{
 		System.out.println(bean);
@@ -201,12 +221,12 @@ public class BoardDao extends SuperDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = " select no, id, password, subject, content, readhit, regdate, remark, groupno, orderno, depth";
+		String sql = " select no, id, password, subject, content, readhit, regdate, remark, groupno, orderno, depth, likes, hates";
 		
 		// 답글 이전 코딩 방식
 //		sql += " from (select no, id, password, subject, content, readhit, regdate, remark, groupno, orderno, depth, rank() over(order by no desc) as ranking" ;
 		
-		sql += " from (select no, id, password, subject, content, readhit, regdate, remark, groupno, orderno, depth, rank() over(order by groupno desc, orderno asc) as ranking " ;
+		sql += " from (select no, id, password, subject, content, readhit, regdate, remark, groupno, orderno, depth, likes, hates, rank() over(order by groupno desc, orderno asc) as ranking " ;
 		sql += " from boards " ;
 		
 		String mode = pageInfo.getMode() ;
@@ -282,6 +302,9 @@ public class BoardDao extends SuperDao{
 		bean.setGroupno(rs.getInt("groupno"));
 		bean.setOrderno(rs.getInt("orderno"));
 		bean.setDepth(rs.getInt("depth"));
+
+		bean.setLikes(rs.getInt("likes"));
+		bean.setHates(rs.getInt("hates"));
 		
 		return bean;
 	}
@@ -364,6 +387,8 @@ public class BoardDao extends SuperDao{
 		
 		return cnt;
 	}
+
+
 
 
 

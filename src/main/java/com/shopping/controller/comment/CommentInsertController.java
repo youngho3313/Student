@@ -24,7 +24,7 @@ public class CommentInsertController extends SuperClass{
 		try {
 			cnt = dao.InsertData(bean);
 			
-			new BoardDetailController().doPost(request, response);
+			new BoardDetailController().doGet(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

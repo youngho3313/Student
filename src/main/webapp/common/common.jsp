@@ -24,6 +24,7 @@
 
 <%-- jstl을 위한 태그 라이브러리 선언 --%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%
@@ -130,6 +131,16 @@
 						</ul>
 					</li>					
 					
+					<!-- view section -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" role="button"
+							data-bs-toggle="dropdown">데이터 보기</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a class="dropdown-item" href="<%=notWithFormTag%>vwList">목록 보기</a>
+							</li>
+						</ul>
+					</li>	
 				</ul>
 			</div>
 		</div>

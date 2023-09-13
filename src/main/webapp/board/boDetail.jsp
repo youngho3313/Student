@@ -9,8 +9,32 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	
+	<style type="text/css">
+		.container{margin: 10px;}
+		#backButton{margin: auto;}
+		.emoticon{text-decoration: none;}
+	</style>
 	<script type="text/javascript">
+		
+		/* 삭제버튼 클릭 */
+		/* on() 메서드는 선택된 요소에 이벤트 핸들러함수를 연결시켜 주는 기능을 합니다. */
+		/* cnum이라는 속성을 개발자가 지정해 두었습니다. */
+		$(document).on('click','.delete_btn',function(){
+			if(confirm('선택하신 항목을 삭제하시겠습니까?')){
+				$.ajax({
+					url:'<%=notWithFormTag%>cmDelete', 
+					data:'cnum=' + $(this).attr('cnum'),
+					type:'get',
+					dataType:'text',
+					success:function(result, status){
+						console.log(result);
+						console.log(status);
+						getListComment() ;
+					}
+				});
+			}
+		});
+		
 		function getListComment(){
 			$('#comment_list').empty(); //.empty : jquery함수
 			/* $.ajax() 함수를 이용하여 데이터 보여주기 */
@@ -29,7 +53,7 @@
 						var content = result[idx].content ;
 						var regdate = result[idx].regdate ;
 						addNewItem(cnum, id, content, regdate);
-					});
+					})
 				},
 				error:function(result, status){
 					console.log(result) ;
@@ -75,7 +99,7 @@
 			
 		}
 		$(document).ready(function(){
-			console.log('boDetail start');
+			/* console.log('boDetail start'); */
 			getListComment();
 			
 			/* 사용자가 댓글을 입력하고, 전송 버튼을 눌렀습니다. */
@@ -175,29 +199,17 @@
 </head>
 <body>
 	<div class="container">
-		<h2>${requestScope.bean.no}번 글의 상세정보</h2>
+		<h2>[${requestScope.bean.no}]번 글의 상세정보</h2>
 		<table class="table">
 			<thead></thead>
 			<tbody>
 				<tr>
-					<td align="center">글번호</td>
+					<td align="center">번호</td>
 					<td>${requestScope.bean.no}</td>
 				</tr>
 				<tr>
-					<td align="center">아이디</td>
-					<td>
-						
-						<c:if test="${requestScope.bean.id==null}">
-								!아이디정보없음!
-							</c:if>
-							<c:if test="${requestScope.bean.id!= null}">
-								${requestScope.bean.id}
-							</c:if>
-					</td>
-				</tr>
-				<tr>
-					<td align="center">비밀번호</td>
-					<td>${requestScope.bean.password}</td>
+					<td align="center">작성자</td>
+					<td>${requestScope.bean.id}</td>
 				</tr>
 				<tr>
 					<td align="center">글제목</td>
@@ -211,10 +223,6 @@
 					<td align="center">조회수</td>
 					<td>${requestScope.bean.readhit}</td>
 				</tr>
-				<tr>
-					<td align="center">작성일자</td>
-					<td>${requestScope.bean.regdate}</td>
-				</tr>
 			</tbody>
 		</table>
 		
@@ -222,6 +230,16 @@
 			<button type="button" class="btn btn-primary" onclick="history.back();">
 				돌아 가기
 			</button>
+	         &nbsp;&nbsp;&nbsp;
+	         <a class="emoticon" href="<%=notWithFormTag%>boEmoticon&mode=likes&no=${bean.no}">
+	            <img src="<%=appName%>/image/likes.png" width="30px" height="30px" alt="">
+	            ${bean.likes}
+	         </a>
+	         &nbsp;&nbsp;
+	         <a class="emoticon" href="<%=notWithFormTag%>boEmoticon&mode=hates&no=${bean.no}">
+	            <img src="<%=appName%>/image/hates.png" width="30px" height="30px" alt="">
+	            ${bean.hates}
+	         </a>   
 		</div>
 		
 		<div>

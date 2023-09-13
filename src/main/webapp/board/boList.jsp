@@ -79,16 +79,13 @@
 			                           </select>
 			                        
 			                        
-			                        <input class="form-control-sm" type="text" name="keyword" id="keyword"
-			                           placeholder="키워드 입력">
-			                                           
+			                           <input class="form-control-sm" type="text" 
+			                        	      name="keyword" id="keyword" placeholder="키워드 입력">            
 			                           <button type="submit" class="btn btn-warning form-control-sm" onclick="">검색</button>
-			                        
-			                           <button type="button" class="btn btn-warning form-control-sm" onclick="searchAll();">전체 검색</button>
-			                                            
+			                           <button type="button" class="btn btn-warning form-control-sm" onclick="searchAll();">전체 검색</button>                
 			                           <button type="button" class="btn btn-info form-control-sm"  onclick="writeForm();">글 쓰기</button>
-			                                 
-			                           ${requestScope.pageInfo.pagingStatus}
+			                           <span class="label label-default">${requestScope.pageInfo.pagingStatus}</span>
+			                           
 			                        </div>
 			                     </div>
 			                  </form>                     
@@ -99,16 +96,9 @@
 				</tr>
 				<c:forEach var="bean" items="${requestScope.datalist}" varStatus="status" >
 					<tr>
-					
 						<td align="center">${bean.no}</td>
 						<td>
 							${bean.id}
-							<%-- <c:if test="${bean.id==null}">
-								아이디정보없음
-							</c:if>
-							<c:if test="${bean.id!= null}">
-								${bean.id}
-							</c:if> --%>
 						</td>
 						<td>${bean.password}</td>
 						<td >

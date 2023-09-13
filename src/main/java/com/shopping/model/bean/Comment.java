@@ -1,33 +1,32 @@
 package com.shopping.model.bean;
 
 public class Comment {
-	private Integer cnum;
-	private Integer no;
+	private int cnum;
+	private int no;
 	private String id;
 	private String content;
 	private String regdate;
 	
-	
-	public Comment() {
-		super();
-	}
+
 
 	@Override
 	public String toString() {
 		return "Comment [cnum=" + cnum + ", no=" + no + ", id=" + id + ", content=" + content + ", regdate=" + regdate
 				+ "]";
 	}
-	
-	public Integer getCnum() {
+
+
+
+	public int getCnum() {
 		return cnum;
 	}
-	public void setCnum(Integer cnum) {
+	public void setCnum(int cnum) {
 		this.cnum = cnum;
 	}
-	public Integer getNo() {
+	public int getNo() {
 		return no;
 	}
-	public void setNo(Integer no) {
+	public void setNo(int no) {
 		this.no = no;
 	}
 	public String getId() {
@@ -48,6 +47,7 @@ public class Comment {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+	
 	
 	
 }

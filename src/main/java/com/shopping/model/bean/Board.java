@@ -14,6 +14,9 @@ public class Board {
 	private Integer groupno; //그룹 번호
 	private Integer orderno; //순서 번호
 	
+	// 좋아요 싫어요 변수
+	private Integer likes;
+	private Integer hates;
 	
 
 	public Board() {
@@ -32,11 +35,13 @@ public class Board {
 		this.depth = depth;
 	}
 	
+	
+
 	@Override
 	public String toString() {
 		return "Board [no=" + no + ", id=" + id + ", password=" + password + ", subject=" + subject + ", content="
 				+ content + ", readhit=" + readhit + ", regdate=" + regdate + ", depth=" + depth + ", groupno="
-				+ groupno + ", orderno=" + orderno + "]";
+				+ groupno + ", orderno=" + orderno + ", likes=" + likes + ", hates=" + hates + "]";
 	}
 
 	public Integer getNo() {
@@ -99,4 +104,21 @@ public class Board {
 	public void setOrderno(Integer orderno) {
 		this.orderno = orderno;
 	}
+
+	public Integer getLikes() {
+		return likes;
+	}
+
+	public void setLikes(Integer likes) {
+		this.likes = likes;
+	}
+
+	public Integer getHates() {
+		return hates;
+	}
+
+	public void setHates(Integer hates) {
+		this.hates = hates;
+	}
+	
 }

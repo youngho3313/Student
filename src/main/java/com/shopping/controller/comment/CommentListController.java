@@ -21,10 +21,11 @@ public class CommentListController extends SuperClass{
 		
 		CommentDao dao = new CommentDao();
 		List<Comment> comments = null;
+		System.out.println("comLisCon");
 		
 		try {
 			comments = dao.GetDataByPk(no);
-			System.out.println(no + "번글에 대한 댓글 갯수 : " + comments.size());//f
+			System.out.println(no + "번글에 대한 댓글 갯수 : " + comments.size()); ////////
 			
 			JSONArray jsArr = new JSONArray(); // JSONArray : json 데이터를담을 수 있는 배열
 			
@@ -39,7 +40,7 @@ public class CommentListController extends SuperClass{
 				jsArr.add(obj) ;
 			}
 
-			System.out.print("CommentListController.doGet :: jsArr.toString() : ");
+			System.out.println("CommentListController.doGet :: jsArr.toString() : ");
 			System.out.println(jsArr.toString());
 			
 			request.setAttribute("jsArr", jsArr);
