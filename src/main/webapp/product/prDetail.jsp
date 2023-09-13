@@ -167,24 +167,31 @@
 							<p class="card-text">${bean.contents}</p>
 							<p class="card-text">합계 : <span id="totalprice">12345원</span>원</p>
 							
-							<ul class="pagination">
-							  <li class="page-item"><a class="page-link minus" href="#"> - </a></li>
-							  <li class="page-item">
-							  	<a class="page-link" href="#">
-							  		<input type="text" name="qty" id="qty" value="0"
-							  		 data-bs-trigger="hover"
-							  		 data-bs-toggle="popover" 
-							  		 title="수량 누적 알림" 
-							  		 data-bs-content="기존 카트에 품목이 이미 존재하면 수량을 누적합니다.">
-							  	</a>
-							  </li>
-							  <li class="page-item"><a class="page-link plus" href="#"> + </a></li>
-							</ul>
+							<form action="<%=withFormTag%>" method="post">
+								<ul class="pagination">
+								  <li class="page-item"><a class="page-link minus" href="#"> - </a></li>
+								  <li class="page-item">
+								  	<a class="page-link" href="#">
+								  		<input type="text" name="command" value="maInsert">
+								  		<input type="text" name="pnum" value="${bean.pnum }">
+								  		<input type="text" name="stock" value="${bean.stock }">
+								  		
+								  		<input type="text" name="qty" id="qty" value="0"
+								  		 data-bs-trigger="hover"
+								  		 data-bs-toggle="popover" 
+								  		 title="수량 누적 알림" 
+								  		 data-bs-content="기존 카트에 품목이 이미 존재하면 수량을 누적합니다.">
+								  	</a>
+								  </li>
+								  <li class="page-item"><a class="page-link plus" href="#"> + </a></li>
+								</ul>
+								
+								<div class="btn-group">
+									<button type="submit" class="btn btn-primary cart">장바구니</button>
+									<button type="button" class="btn btn-primary rightnow">바로 구매</button>
+								</div>
+							</form>
 							
-							<div class="btn-group">
-								<button type="button" class="btn btn-primary cart">장바구니</button>
-								<button type="button" class="btn btn-primary rightnow">바로 구매</button>
-							</div>
 						</div>
 					</td>
 				</tr>
