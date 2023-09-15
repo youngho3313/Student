@@ -4,7 +4,8 @@
 <%@ include file="./../common/bootstrap5.jsp" %>    
 <%@ include file="./../common/common.jsp" %>
 
-<!-- 마스터변경: 4시58분 -->
+
+<!-- 알파입니다. 5시00분 -->
 <!DOCTYPE html>
 <html>
 <head>
