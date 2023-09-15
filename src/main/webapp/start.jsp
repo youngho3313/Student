@@ -4,6 +4,7 @@
 <%@ include file="./../common/bootstrap5.jsp" %>    
 <%@ include file="./../common/common.jsp" %>
 
+<!-- 깃허브 푸시,풀 연습용입니다. 9월15일 5시 14분 -->
 <!DOCTYPE html>
 <html>
 <head>
