@@ -12,6 +12,7 @@ public class MemberLogoutController extends SuperClass{
 		
 		// 로그인시 저장했던 로그인 정보 등을 깨끅히 비웁니다.
 		super.session.invalidate();
+		//MallCalculate의 removeAttribute()랑 다른점은 invalidate는 깔끔하게 전부 비운다는 점이다.
 		
 		super.gotoPage("member/meLoginForm.jsp"); //로그인 페이지로 이동함
 	}

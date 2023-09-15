@@ -22,7 +22,7 @@
 <body>
 	<br/>
 	<div class="container">
-		<h2>로그인 페이지</h2>
+		<h2>로그인 페이지0</h2>
 		<p>로그인을 위한 페이지입니다.</p>
 		<form action="<%=withFormTag%>" method="post">
 			<input type="hidden" name="command" value="meLogin"> 

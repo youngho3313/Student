@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="com.shopping.model.bean.Member"%>
 <%-- <%@ include file="./../common/bootstrap5.jsp" %>  --%>	
 
 <%
@@ -26,19 +25,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="com.shopping.model.bean.Member"%>
 
-<%
-	// 이 코드들은 차후 삭제 예정
-	/*Member mem = new Member() ;
-	mem.setId("hong") ; // admin  hong 
-	mem.setName("홍길동") ; // 관리자  홍길동
-	session.setAttribute("loginfo", mem);
-	session.setAttribute("loginfo", null); // 미로그인
-	
-	// 경고성 Alert Box
-	session.setAttribute("alertMessage", "아이디/비번 정보를 잘못 입력하셨습니다.");
-	session.setAttribute("alertMessage", null);*/
-%>
 
 <!-- whologin 변수는 현재 로그인 상태를 알려 주는 변수입니다. -->
 <!-- 미로그인(0) 일반 사용자(1) 관리자(2) -->
@@ -130,6 +118,24 @@
 							<li><a class="dropdown-item" href="<%=notWithFormTag%>prList">목록 보기</a></li>
 						</ul>
 					</li>					
+					
+					
+					<!-- 쇼핑몰 section -->
+	                 <li class="nav-item dropdown">
+	                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">쇼핑몰</a>
+	                   <ul class="dropdown-menu">          
+	                     <li>
+	                        <a class="dropdown-item" href="<%=notWithFormTag%>maList">
+	                           카트 내역 보기
+	                        </a>
+	                     </li>
+	                     <li>
+	                        <a class="dropdown-item" href="<%=notWithFormTag%>maHistory">
+	                           나의 쇼핑 내역
+	                        </a>
+	                     </li>
+	                   </ul>
+	                 </li> 
 					
 					<!-- view section -->
 					<li class="nav-item dropdown">

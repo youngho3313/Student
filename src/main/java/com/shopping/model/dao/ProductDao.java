@@ -6,9 +6,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.shopping.model.bean.Product;
+import com.shopping.model.mall.CartItem;
 import com.shopping.utility.Paging;
 
 public class ProductDao extends SuperDao{
+	public int GetMileagePoint(Integer pnum) throws Exception {
+		// MallDao에서 사용
+		int point = 0;
+		
+		String sql = " select point from products" ;
+		sql += " where pnum = ? " ;
+		
+		conn = super.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, pnum);
+		ResultSet rs = pstmt.executeQuery() ;
+		
+		if(rs.next()) {
+			point = rs.getInt("point") ;
+		}
+		
+		if(rs!=null) {rs.close();}
+		if(pstmt!=null) {pstmt.close();}
+		if(conn!=null) {conn.close();}
+		
+		return point;
+	}
+	
+	public CartItem GetCartItem(Integer pnum, Integer qty)  throws Exception {
+		// MallListController.doGet에서 사용
+		Product bean = this.GetDataByPk(pnum); // 상품정보
+		
+		CartItem item = new CartItem(); // 상품정보 + 구매수량 + 로그인아이디
+		
+		item.setId(null); // whisList용 테이블과 관련있음(지금은 의미 없음)
+		item.setImage01(bean.getImage01());
+		item.setPname(bean.getName());
+		item.setPnum(pnum);
+		item.setPoint(bean.getPoint());
+		item.setPrice(bean.getPrice());
+		item.setQty(qty);
+		
+		return item;
+	}
+	
 	public int UpdateData(Product bean) throws Exception {
 		System.out.println("상품 수정 빈 :\n" + bean);
 		PreparedStatement pstmt = null;
@@ -316,6 +357,10 @@ public class ProductDao extends SuperDao{
 		
 		return lists ;
 	}
+
+
+
+
 
 
 

@@ -12,7 +12,7 @@ import com.shopping.model.mall.CartManager;
 public class SuperClass implements SuperController {
 	private HttpServletRequest request ;
 	private HttpServletResponse response ;
-	protected HttpSession session ;
+	protected HttpSession session ; // 세션
 	
 	protected Member loginfo = null ; //로그인 여부를 파악하는 변수
 	protected CartManager mycart = null; // 나의 카트
@@ -93,7 +93,7 @@ public class SuperClass implements SuperController {
 		String mappingName = "/Shopping";
 		
 		String text = appName + mappingName + "?command=" + todoCommand ;
-		return text;
+		return text ;
 	}
 
 

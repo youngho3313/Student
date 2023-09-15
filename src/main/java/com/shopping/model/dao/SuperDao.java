@@ -10,6 +10,9 @@ public class SuperDao {
 		String url = "jdbc:oracle:thin:@localhost:1521:xe" ;
 		String id = "shopping" ;
 		String password = "oracle" ;
+//		String url = "jdbc:oracle:thin:@116.122.37.100:1521:xe" ;
+//		String id = "DBICTteam001" ;
+//		String password = " ICT1q2w3e4r" ;
 		
 		try {
 			this.conn = DriverManager.getConnection(url, id, password) ;
