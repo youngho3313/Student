@@ -4,9 +4,6 @@
 <%@ include file="./../common/bootstrap5.jsp" %>    
 <%@ include file="./../common/common.jsp" %>
 
-<!-- 마스터변경: 4시58분 -->
-<!-- 마스터 입니다. -->
-<!-- 모든 브랜치에 이 줄을 적용합니다. -->
 <!DOCTYPE html>
 <html>
 <head>
