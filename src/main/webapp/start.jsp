@@ -5,7 +5,7 @@
 <%@ include file="./../common/common.jsp" %>
 
 <!-- 마스터변경: 4시58분 -->
-
+<!-- 베타 변경 5시 03분 -->
 <!DOCTYPE html>
 <html>
 <head>
