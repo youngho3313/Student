@@ -19,6 +19,7 @@ import com.shopping.transport.VehicleController;
 
 public class MyUtility {
 	public static void deleteOldImageFile(String webPath, MultipartRequest mr) {
+		// Frontcontroller.doProcess에서 사용합니다.
 		// 상품 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
 		String[] deleteImages = 
 			{ 

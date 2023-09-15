@@ -93,6 +93,7 @@ public class FrontController extends HttpServlet {
 	}	
 	
 	public void init(ServletConfig config) throws ServletException {
+		// 프로그램에서 서블렛 호출 시 최초에 호출되는 메서드입니다.
 		this.txtSetting = config.getInitParameter("txtSetting");
 		System.out.println("txtSetting is [" + this.txtSetting + "]");
 		

@@ -1,7 +1,7 @@
 package com.shopping.utility;
 
 public class Paging {
-	// 페이징을 위한 클래스
+	// 페이징을 위한 클래스<boList, meList, prList에서 사용합니다.>
 	private int totalCount = 0 ; // 테이블에 들어 있는 총 행의 개수
 	private int totalPage = 0 ; // 전체 페이지 수
 	
