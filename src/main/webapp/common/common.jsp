@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%-- <%@ include file="./../common/bootstrap5.jsp" %>  --%>	
+<!-- 깃허브 업로드테스트입니다. -->
 
 <%
 	// appName : 애플리케이션 이름(프로젝트 이름_Teacher)
