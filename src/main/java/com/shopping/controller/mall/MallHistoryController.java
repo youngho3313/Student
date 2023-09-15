@@ -25,7 +25,7 @@ public class MallHistoryController extends SuperClass {
 		try {
 			List<Order> orderList = dao.GetHistory(super.loginfo.getId()) ;
 			if(orderList.size()==0) {
-				super.setAlertMessage("이전 결재 내역이 존재하지 않습니다.");
+				super.setAlertMessage("이전 결재 내역이 존재하지 않습니다."); 
 				new ProductListController().doGet(request, response); // prList로 이동
 				
 			}else {
