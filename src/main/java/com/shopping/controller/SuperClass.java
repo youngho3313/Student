@@ -33,6 +33,10 @@ public class SuperClass implements SuperController {
 		return text;
 	}
 	
+	
+	
+	
+	
 	public Integer getNumberData(String parameter) {
 		// 숫자형 파라미터에 대한 처리를 해주는 메소드
 		// 잘못된 숫자 형식이면 0을 반환해 줍니다.
@@ -89,6 +93,7 @@ public class SuperClass implements SuperController {
 	}
 
 	public String getUrlInformation(String todoCommand) {
+		//  에서 사용합니다.
 		String appName = this.request.getContextPath();
 		String mappingName = "/Shopping";
 		

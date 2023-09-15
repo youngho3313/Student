@@ -23,7 +23,8 @@ public class MyUtility {
 		// 상품 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
 		String[] deleteImages = 
 			{ 
-					mr.getParameter("deleteImage01"),
+					// "deleteImage01"은 prUpdateForm.jsp에서 옵니다.
+					mr.getParameter("deleteImage01"), 
 					mr.getParameter("deleteImage02"),
 					mr.getParameter("deleteImage03")
 			};
