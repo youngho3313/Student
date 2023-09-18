@@ -7,8 +7,76 @@ import java.util.List;
 import java.util.Map;
 import com.shopping.model.bean.Member;
 import com.shopping.model.bean.Order;
+import com.shopping.model.mall.CartItem;
 
 public class MallDao extends SuperDao {
+	
+	public List<CartItem> showDetail(int oid) throws Exception {
+		// maHistory.상세보기, mallDetailController.doget에서 사용합니다.
+		// 송장 번호에 대한 상세 내역을 컬렉션 형태로 반환합니다.
+		String sql = " select p.pnum, p.name pname, od.qty, p.price, p.point, p.image01 ";
+		sql += " from (orders o inner join orderdetails od " ;
+		sql += " on o.oid = od.oid) inner join products p" ;
+		sql += " on od.pnum = p.pnum and o.oid = ? " ;
+		sql += " order by od.odid desc " ;
+		
+		conn = super.getConnection() ;
+		PreparedStatement pstmt = conn.prepareStatement(sql) ;
+		pstmt.setInt(1, oid);
+		ResultSet rs = pstmt.executeQuery();
+		
+		List<CartItem> lists = new ArrayList<CartItem>();
+		
+		if(rs.next()) {
+			lists.add(this.makeCartItemBean(rs)) ;
+		}
+		
+		if(rs!=null) { rs.close();}
+		if(pstmt!=null) { pstmt.close();}
+		if(conn!=null) { conn.close();}
+		
+		return lists ;
+	}
+
+	
+	private CartItem makeCartItemBean(ResultSet rs) throws Exception {
+		// 이 파일 MallDao.showDetail에서 사용합니다.
+		CartItem item = new CartItem();
+		
+		//item.setId(rs.getString("id"));
+		item.setImage01(rs.getString("image01"));
+		item.setPname(rs.getString("pname"));
+		item.setPnum(rs.getInt("pnum"));
+		item.setPoint(rs.getInt("point"));
+		item.setPrice(rs.getInt("price"));
+		item.setQty(rs.getInt("qty"));
+		
+		return item ;
+	}
+
+
+	public Order getDetailHistory(int oid) throws Exception{
+		// maHistory.상세보기, mallDetailController.doget에서 사용합니다.
+		// 해당 송장번호(oid)에 대한 주문 정보(세트)를 반환해 줍니다.
+		String sql = " select * from orders where oid = ? " ;
+		Order bean = null;
+		
+		conn = super.getConnection() ;
+		PreparedStatement pstmt = conn.prepareStatement(sql) ;
+		pstmt.setInt(1, oid);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			bean = this.makeOrderBean(rs);
+		}
+		
+		if(rs!=null) { rs.close();}
+		if(pstmt!=null) { pstmt.close();}
+		if(conn!=null) { conn.close();}
+		
+		return bean;
+	}
+
 	
 	public List<Order> GetHistory(String id) throws Exception {
 		// MallHistoryController.doGet에서 사용합니다.
@@ -34,7 +102,7 @@ public class MallDao extends SuperDao {
 	}
 	
 	private Order makeOrderBean(ResultSet rs) throws Exception {
-		// 이 파일 GetHistory에서 사용합니다.
+		// 이 파일 MallDao.GetHistory에서 사용합니다.
 		Order bean = new Order() ;
 		bean.setId(rs.getString("id"));
 		bean.setOid(rs.getInt("oid"));
@@ -125,6 +193,9 @@ public class MallDao extends SuperDao {
 		if(pstmt!=null) { pstmt.close();}
 		if(conn!=null) { conn.close();}
 	}
+
+
+
 
 
 

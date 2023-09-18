@@ -10,6 +10,8 @@ public class Member {
 	private Integer salary;
 	private String address;
 	private String manager;
+	private Integer mpoint; //마일리지 적립 포인트
+	
 	
 	// 취미는 차후 데이터 베이스에서 반영하지 않는다.
 	private String hobby;
@@ -33,15 +35,19 @@ public class Member {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", name=" + name + ", password=" + password + ", gender=" + gender + ", birth="
 				+ birth + ", marriage=" + marriage + ", salary=" + salary + ", address=" + address + ", manager="
-				+ manager + "]";
+				+ manager + ", mpoint=" + mpoint + ", hobby=" + hobby + "]";
 	}
-	
+
+	public Integer getMpoint() {
+		return mpoint;
+	}
+	public void setMpoint(Integer mpoint) {
+		this.mpoint = mpoint;
+	}
 	public String getId() {
 		return id;
 	}

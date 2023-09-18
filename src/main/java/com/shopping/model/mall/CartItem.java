@@ -2,6 +2,7 @@ package com.shopping.model.mall;
 
 // Cart에 담겨져 있는 상품 1개에 대한 세부 정보를 저장할 bean 클래스
 public class CartItem {
+	
 	private String id ; // 고객 아이디
 	
 	private int pnum ; // 상품번호

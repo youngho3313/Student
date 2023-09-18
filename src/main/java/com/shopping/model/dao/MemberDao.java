@@ -184,6 +184,7 @@ public class MemberDao extends SuperDao{
 		bean.setSalary(rs.getInt("salary"));
 		bean.setAddress(rs.getString("address"));
 		bean.setManager(rs.getString("manager"));
+		bean.setMpoint(rs.getInt("mpoint"));
 		
 		return bean;
 	}
