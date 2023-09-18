@@ -42,7 +42,7 @@ public class FrontController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8"); // 한글 깨짐 방지
 		
 		// command Parameter : 컨트롤러 분기를 위한 핵심 파라미터 
-		// 파라메터 command는 SuperClass.getUrlInformation에서 넘겨줍니다.
+		// 파라메터 command는 SuperClass.getUrlInformation에서 붙여줬습니다.
 		String command = request.getParameter("command") ;
 		
 		if(command == null) {

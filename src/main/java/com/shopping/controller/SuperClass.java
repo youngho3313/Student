@@ -88,7 +88,9 @@ public class SuperClass implements SuperController {
 	}
 
 	public String getUrlInformation(String todoCommand) {
-		//  에서 사용합니다.
+		//  BoardUpdateController.doPost 에서 사용합니다.
+		//  ProductUpdateController.doPost 에서 사용합니다.
+		// FrontController.doProcess에서 command 정보를 참고합니다.
 		String appName = this.request.getContextPath();
 		String mappingName = "/Shopping";
 		

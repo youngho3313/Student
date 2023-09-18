@@ -15,6 +15,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.shopping.controller.SuperController;
 
+// Frontcontroller.doProcess, .init에서 사용하는 메서드를 모아놓은 클래스입니다.
 public class MyUtility {
 	public static void deleteOldImageFile(String webPath, MultipartRequest mr) {
 		// Frontcontroller.doProcess에서 사용합니다.
@@ -38,6 +39,7 @@ public class MyUtility {
 	}
 	
 	public static MultipartRequest getMultipartRequest(HttpServletRequest request, String uploadPath) {
+		// FrontController.doProcess에서 사용합니다.
 		// 이미지 업로드에 필요한 멀티 파트 객체를 생성하여 반환합니다.
 		MultipartRequest mr = null;
 		int maxPostSize = 10 * 1024 * 1024;
@@ -57,6 +59,8 @@ public class MyUtility {
 	}
 	
 	public static Map<String, SuperController> getTodolistMap(String filename){
+		// Frontcontroller.init에서 사용합니다.
+		// todolist.txt에서 매핑정보를 읽어옵니다.
 		Map<String, SuperController> map = new HashMap<String, SuperController>();
 		
 		Properties prop = getPropertiesData(filename);
@@ -81,6 +85,7 @@ public class MyUtility {
 		return map;
 	}
 	private static Properties getPropertiesData(String webFullPathName) {
+		// 이 파일 MyUtility.getSettingMap, .getTodolistMap에서 사용합니다.
 		//스트림을 이용하여 프로퍼티 목록을 반환해 줍니다.
 		FileInputStream fis = null;
 		Properties prop = null;
@@ -101,16 +106,15 @@ public class MyUtility {
 				e2.printStackTrace();
 			}
 			
-			
 		}
-		System.out.println("prop.toString()");
+		System.out.println("MyUtility.getPropertiesData :: prop.toString()");
 		System.out.println(prop.toString());
-		
 		
 		return prop;
 	}
 
 	public static Map<String, String> getSettingMap(String webSettingName) {
+		// Frontcontroller.init에서 사용합니다.
 		// webSettinName 파일을 이용하여 자바의 Map 형식으로 반환해 줍니다.
 		Map<String, String> map = new HashMap<String, String>();
 		Properties prop = null;
@@ -131,10 +135,6 @@ public class MyUtility {
 		
 		return map;
 	}
-
-
-
-
 
 
 }
