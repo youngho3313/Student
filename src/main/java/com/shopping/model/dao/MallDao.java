@@ -7,24 +7,77 @@ import java.util.List;
 import java.util.Map;
 import com.shopping.model.bean.Member;
 import com.shopping.model.bean.Order;
+import com.shopping.model.bean.WishList;
 import com.shopping.model.mall.CartItem;
 
 public class MallDao extends SuperDao {
+
+	public List<WishList> getWishList(String id)  throws Exception {
+		// MemberLoginController.doPost에서 사용합니다.
+		// 나의 WishList 항목을 컬렉션으로 반환합니다.
+		String sql = " select * from WishList where id =  ? " ;
+		conn = super.getConnection() ;
+		PreparedStatement pstmt = conn.prepareStatement(sql) ;
+		pstmt.setString(1, id);
+		ResultSet rs = pstmt.executeQuery();
+		
+		List<WishList> lists = new ArrayList<WishList>() ;
+		
+		while(rs.next()) {
+			lists.add(this.makeWishListBean(rs)) ;
+		}
+		
+		if(rs!=null) { rs.close();}
+		if(pstmt!=null) { pstmt.close();}
+		if(conn!=null) { conn.close();}
+		
+		return lists ;
+	}
 	
-	public void insertWishList(String id, Map<Integer, Integer> wishList) {
+	private WishList makeWishListBean(ResultSet rs)  throws Exception {
+		// 이 파일 MallDao.getWishList에서 사용합니다.
+		WishList bean = new WishList();
+		bean.setId(rs.getString("id"));
+		bean.setPnum(rs.getInt("pnum"));
+		bean.setQty(rs.getInt("rs"));
+		return bean;
+	}
+
+	public void insertWishList(String id, Map<Integer, Integer> wishList) throws Exception  {
 		// MemberLogoutController.doGet에서 사용합니다.
 		// 로그인 한 사람의 찜 목록(wishList)을 데이터베이스에 추가합니다.
 		String sql = "";
+		int cnt = -1 ;
+		PreparedStatement pstmt = null;
+		// rs는 필요없음
+		
+		conn = super.getConnection() ;
+		conn.setAutoCommit(false);
 		
 		// step 01 : 과거 나의 찜 정보가 있으면 일단 삭제합니다.
 		sql = " delete from WishList where id = ? ";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, id);
+		cnt = pstmt.executeUpdate();
+		if(pstmt!=null) {pstmt.close();}
 		
 		// step 02 : 현재 세션 정보를 반복하여 테이블에 인서트합니다.
 		sql = " insert into WishList(id, pnum, qty) ";
 		sql += "  values(?, ?, ?)  " ;
+		pstmt = conn.prepareStatement(sql);
+		
+		for(Integer pnum: wishList.keySet()) {
+			pstmt.setString(1, id);
+			pstmt.setInt(2, pnum);
+			pstmt.setInt(3, wishList.get(pnum));
+			cnt = pstmt.executeUpdate();
+		}
+		
+		conn.commit();
+		if(pstmt!=null) { pstmt.close();}
+		if(conn!=null) { conn.close();}
 		
 	}
-
 	
 	public List<CartItem> showDetail(int oid) throws Exception {
 		// maHistory.상세보기, mallDetailController.doget에서 사용합니다.
@@ -52,7 +105,6 @@ public class MallDao extends SuperDao {
 		
 		return lists ;
 	}
-
 	
 	private CartItem makeCartItemBean(ResultSet rs) throws Exception {
 		// 이 파일 MallDao.showDetail에서 사용합니다.
@@ -68,7 +120,6 @@ public class MallDao extends SuperDao {
 		
 		return item ;
 	}
-
 
 	public Order getDetailHistory(int oid) throws Exception{
 		// maHistory.상세보기, mallDetailController.doget에서 사용합니다.
@@ -208,12 +259,5 @@ public class MallDao extends SuperDao {
 		if(pstmt!=null) { pstmt.close();}
 		if(conn!=null) { conn.close();}
 	}
-
-
-
-
-
-
-
 
 }

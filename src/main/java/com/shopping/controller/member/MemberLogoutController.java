@@ -21,7 +21,9 @@ public class MemberLogoutController extends SuperClass{
 				if(wishList.size() > 0) {
 					dao.insertWishList(super.loginfo.getId(), wishList); // MallDao.insertWishList
 				}
-				
+			}else {
+				super.youNeededLogin();
+				return;
 			}
 			
 			// 로그인시 저장했던 로그인 정보 등을 깨끅히 비웁니다.

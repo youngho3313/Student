@@ -14,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.shopping.controller.SuperController;
-import com.shopping.sport.SportController;
-import com.shopping.transport.VehicleController;
 
 public class MyUtility {
 	public static void deleteOldImageFile(String webPath, MultipartRequest mr) {
@@ -82,34 +80,6 @@ public class MyUtility {
 		
 		return map;
 	}
-	
-	public static Map<String, VehicleController> getTransportationMap(String webFullPathName){
-		// 운송 수단 텍스트 파일을 이용하여 각각 동적으로 객체를 생성합니다.
-		// 이 항목들을 Map 구조에 담아서 반환합니다.
-		Map<String, VehicleController> map = new HashMap<String, VehicleController>();
-		
-		Properties prop = getPropertiesData(webFullPathName);
-		
-		Enumeration<Object> keys = prop.keys() ;
-		
-		while(keys.hasMoreElements()) {
-			String command = keys.nextElement().toString() ;
-			String className = prop.getProperty(command);
-			System.out.println(command + "/" + className);
-			
-			try {
-				Class<?> handleClass = Class.forName(className);
-				VehicleController instance = (VehicleController)handleClass.newInstance();
-				
-				map.put(command, instance) ;
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return map;
-	}
-
 	private static Properties getPropertiesData(String webFullPathName) {
 		//스트림을 이용하여 프로퍼티 목록을 반환해 줍니다.
 		FileInputStream fis = null;
@@ -162,51 +132,9 @@ public class MyUtility {
 		return map;
 	}
 
-	public static Map<String, SportController> getSportMap(String webFullPathName) {
-		Map<String, SportController> map = new HashMap<String, SportController>();
-		
-		Properties prop = getPropertiesData(webFullPathName);
-		
-		Enumeration<Object> keys = prop.keys();
-		
-		while(keys.hasMoreElements()) {
-			String command = keys.nextElement().toString() ;
-			String className = prop.getProperty(command);
-			System.out.println(command + "/" + className);
-			
-			try {
-				Class<?> handleClass = Class.forName(className);
-				SportController instance = (SportController)handleClass.newInstance();
-				
-				map.put(command, instance);
-			}catch (Exception e){
-				e.printStackTrace();
-			}
-		}
-		
-		return map;
-	}
 
-	public static Map<String, String> getSetting2Map(String webSetting2Name) {
-		// webSetting2Name 파일을 이용하여 자바의 Map 형식으로 반환해 줍니다.
-		Map<String, String> map = new HashMap<String, String>();
-		Properties prop = null;
-		prop = getPropertiesData(webSetting2Name);
-		
-		Enumeration<Object> keys = prop.keys();
-		while(keys.hasMoreElements()) {
-			String key = keys.nextElement().toString();
-			String value = prop.getProperty(key);
-			
-			try {
-				map.put(key, new String(value.getBytes("ISO-8859-1"), "UTF-8"));
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return map;
-	}
+
+
 
 
 }

@@ -14,7 +14,7 @@
 <body>
 <%
 	String gotopage = notWithFormTag + "home";
-	//out.print(gotopage);
+	out.print(gotopage);
 	response.sendRedirect(gotopage);
 %>
 </body>

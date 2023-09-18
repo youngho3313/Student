@@ -66,7 +66,7 @@ public class FrontController extends HttpServlet {
 			}
 		}
 		
-		System.out.println("command is [" + command + "]");
+		System.out.println("FrontController.doProcess :: command is [" + command + "]");
 		
 		SuperController controller = this.todolistMap.get(command) ;
 		
@@ -96,7 +96,7 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// 프로그램에서 서블렛 호출 시 최초에 호출되는 메서드입니다.
 		this.txtSetting = config.getInitParameter("txtSetting");
-		System.out.println("txtSetting is [" + this.txtSetting + "]");
+		System.out.println("FrontController.init :: txtSetting is [" + this.txtSetting + "]");
 		
 		this.todolist = config.getInitParameter("todolist");
 		System.out.println("todolist is [" + this.todolist + "]"); 	
@@ -120,10 +120,10 @@ public class FrontController extends HttpServlet {
 		if(imsiPath==null) {imsiPath = "image";}
 			
 		imageUploadWebPath =  application.getRealPath(imsiPath);
-		System.out.println("imageUploadWebPath is [" + imageUploadWebPath + "]" );
+		System.out.println("FrontController.init :: imageUploadWebPath is [" + imageUploadWebPath + "]" );
 		
 		this.todolistMap = MyUtility.getTodolistMap(todolistFile);
-		System.out.println("todolist file element size = [" + todolistMap.size() + "]");
+		System.out.println("FrontController.init :: todolist file element size = [" + todolistMap.size() + "]");
 	}
 	
 
