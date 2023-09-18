@@ -11,6 +11,21 @@ import com.shopping.model.mall.CartItem;
 
 public class MallDao extends SuperDao {
 	
+	public void insertWishList(String id, Map<Integer, Integer> wishList) {
+		// MemberLogoutController.doGet에서 사용합니다.
+		// 로그인 한 사람의 찜 목록(wishList)을 데이터베이스에 추가합니다.
+		String sql = "";
+		
+		// step 01 : 과거 나의 찜 정보가 있으면 일단 삭제합니다.
+		sql = " delete from WishList where id = ? ";
+		
+		// step 02 : 현재 세션 정보를 반복하여 테이블에 인서트합니다.
+		sql = " insert into WishList(id, pnum, qty) ";
+		sql += "  values(?, ?, ?)  " ;
+		
+	}
+
+	
 	public List<CartItem> showDetail(int oid) throws Exception {
 		// maHistory.상세보기, mallDetailController.doget에서 사용합니다.
 		// 송장 번호에 대한 상세 내역을 컬렉션 형태로 반환합니다.
@@ -193,6 +208,8 @@ public class MallDao extends SuperDao {
 		if(pstmt!=null) { pstmt.close();}
 		if(conn!=null) { conn.close();}
 	}
+
+
 
 
 

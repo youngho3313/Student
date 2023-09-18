@@ -33,10 +33,6 @@ public class SuperClass implements SuperController {
 		return text;
 	}
 	
-	
-	
-	
-	
 	public Integer getNumberData(String parameter) {
 		// 숫자형 파라미터에 대한 처리를 해주는 메소드
 		// 잘못된 숫자 형식이면 0을 반환해 줍니다.
@@ -46,7 +42,6 @@ public class SuperClass implements SuperController {
 		
 		return flag ? 0 : Integer.parseInt(parameter) ;
 	}
-	
 	
 	public void setAlertMessage(String message) {
 		// session 영역에서 "alertMessage"라는 이름으로 사용자에게 주의/오류/경고 문구등을 띄워 줍니다.

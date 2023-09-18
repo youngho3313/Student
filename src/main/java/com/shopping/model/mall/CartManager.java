@@ -44,6 +44,7 @@ public class CartManager {
 	}
 
 	public Map<Integer, Integer> GetAllCartList() {
+		// MemberLogoutController.doGet에서 사용합니다.
 		// 카트 내의 모든 품목들을 반환합니다.
 		return this.carts;
 	}
