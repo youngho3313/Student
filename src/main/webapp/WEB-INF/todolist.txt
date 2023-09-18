@@ -27,7 +27,7 @@ maInsert=com.shopping.controller.mall.MallInsertController
 maUpdate=com.shopping.controller.mall.MallUpdateController
 maDelete=com.shopping.controller.mall.MallDeleteController
 maList=com.shopping.controller.mall.MallListController
-#maDetail=com.shopping.controller.mall.MallDetailController
+maDetail=com.shopping.controller.mall.MallDetailController
 maHistory=com.shopping.controller.mall.MallHistoryController
 maCalculate=com.shopping.controller.mall.MallCalculateController
 # view section
