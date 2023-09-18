@@ -68,8 +68,8 @@ public class MemberDao extends SuperDao{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = " select id, name, password, gender, birth, marriage, salary, address, manager";
-		sql += " from (select id, name, password, gender, birth, marriage, salary, address, manager, rank() over(order by id asc) as ranking" ;
+		String sql = " select id, name, password, gender, birth, marriage, salary, address, manager, mpoint";
+		sql += " from (select id, name, password, gender, birth, marriage, salary, address, manager, mpoint, rank() over(order by id asc) as ranking" ;
 		sql += " from members)" ;
 		sql += " where ranking between ? and ? " ;
 		
@@ -119,25 +119,25 @@ public class MemberDao extends SuperDao{
 		return lists;
 	}
 	
-	public Member getDataByPk(String id) {
-		Member bean = new Member(id, "김호철", "abc123", "female", "2023/08/20", "미혼", 
-				100, "역삼", "kim9", "탁구,축구,");
-		
-		return bean;
-	}
+//	public Member getDataByPk(String id) {
+//		Member bean = new Member(id, "김호철", "abc123", "female", "2023/08/20", "미혼", 
+//				100, "역삼", "kim9", "탁구,축구,");
+//		
+//		return bean;
+//	}
 	
 	// 회원 목록 보기 기능) 회원 전체 목록을 반환해 줍니다.
-	public List<Member> getDataList(){
-		List<Member> datalist = new ArrayList<Member>() ;
-		
-		datalist.add(new Member("kimho", "김호철", "abc123", "female", "2023/08/20", "미혼", 100, "마포", "kim9", "탁구,축구,"));
-		datalist.add(new Member("park", "박혁신", "abc123", "male", "2002/06/24", "미혼", 200, "용산", "kim9", "농구,배구,"));		
-		datalist.add(new Member("choi", "최만위", "abc123", "female", "2020/12/12", "이혼", 300, "강남", "soon", "농구,배구,"));		
-		datalist.add(new Member("kim", "김동섭", "abc123", "male", "2023/08/20", "결혼", 400, "마포", "soon", "탁구,축구,"));
-		datalist.add(new Member("lee", "이수돌", "abc123", "male", "2023/08/20", "이혼", 500, "서대문", "kim9", "탁구,축구,"));
-		
-		return datalist ;
-	}
+//	public List<Member> getDataList(){
+//		List<Member> datalist = new ArrayList<Member>() ;
+//		
+//		datalist.add(new Member("kimho", "김호철", "abc123", "female", "2023/08/20", "미혼", 100, "마포", "kim9", "탁구,축구,"));
+//		datalist.add(new Member("park", "박혁신", "abc123", "male", "2002/06/24", "미혼", 200, "용산", "kim9", "농구,배구,"));		
+//		datalist.add(new Member("choi", "최만위", "abc123", "female", "2020/12/12", "이혼", 300, "강남", "soon", "농구,배구,"));		
+//		datalist.add(new Member("kim", "김동섭", "abc123", "male", "2023/08/20", "결혼", 400, "마포", "soon", "탁구,축구,"));
+//		datalist.add(new Member("lee", "이수돌", "abc123", "male", "2023/08/20", "이혼", 500, "서대문", "kim9", "탁구,축구,"));
+//		
+//		return datalist ;
+//	}
 
 	public Member getDataByPk(String id, String password) throws Exception {		
 		PreparedStatement pstmt = null ;

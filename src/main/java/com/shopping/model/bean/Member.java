@@ -16,8 +16,10 @@ public class Member {
 	// 취미는 차후 데이터 베이스에서 반영하지 않는다.
 	private String hobby;
 	
+
+
 	public Member(String id, String name, String password, String gender, String birth, String marriage, Integer salary,
-			String address, String manager, String hobby) {
+			String address, String manager, Integer mpoint, String hobby) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -28,6 +30,7 @@ public class Member {
 		this.salary = salary;
 		this.address = address;
 		this.manager = manager;
+		this.mpoint = mpoint;
 		this.hobby = hobby;
 	}
 
