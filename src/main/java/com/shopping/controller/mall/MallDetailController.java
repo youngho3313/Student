@@ -27,6 +27,7 @@ public class MallDetailController extends SuperClass {
 			Order order = dao.getDetailHistory(oid) ; 
 			List<CartItem> lists = dao.showDetail(oid);
 			
+			
 			request.setAttribute("order", order); // 바인딩 : 주문정보
 			request.setAttribute("lists", lists); // 바인딩 : 쇼핑정보
 			

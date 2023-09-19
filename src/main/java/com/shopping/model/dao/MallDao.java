@@ -95,7 +95,7 @@ public class MallDao extends SuperDao {
 		
 		List<CartItem> lists = new ArrayList<CartItem>();
 		
-		if(rs.next()) {
+		while(rs.next()) {
 			lists.add(this.makeCartItemBean(rs)) ;
 		}
 		

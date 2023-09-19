@@ -50,24 +50,24 @@
 						<c:set var="totalAmount" value="0"/>
 						
 						<c:forEach var="bean" items="${requestScope.lists}">
-						<tr>
-							<td valign="middle">${bean.pname}</td>
-							<td valign="middle">
-								<img alt="${bean.image01}" width="45" height="45" 
-									src="<%=appName%>/upload/${bean.image01}">
-							</td>
-							<td valign="middle">
-								<fmt:formatNumber value="${bean.price}" pattern="###,###"/> 원						
-							</td>
-							<td valign="middle">
-								<fmt:formatNumber value="${bean.qty}" pattern="###,###"/> 개						
-							</td>
-							<td valign="middle">
-								<c:set var="amount" value="${bean.price*bean.qty}"/>
-								<c:set var="totalAmount" value="${totalAmount + amount}"/>
-								<fmt:formatNumber value="${amount}" pattern="###,###"/> 원						
-							</td>					
-						</tr>					
+							<tr>
+								<td valign="middle">${bean.pname}</td>
+								<td valign="middle">
+									<img alt="${bean.image01}" width="45" height="45" 
+										src="<%=appName%>/upload/${bean.image01}">
+								</td>
+								<td valign="middle">
+									<fmt:formatNumber value="${bean.price}" pattern="###,###"/> 원						
+								</td>
+								<td valign="middle">
+									<fmt:formatNumber value="${bean.qty}" pattern="###,###"/> 개						
+								</td>
+								<td valign="middle">
+									<c:set var="amount" value="${bean.price * bean.qty}"/>
+									<c:set var="totalAmount" value="${totalAmount + amount}"/>
+									<fmt:formatNumber value="${amount}" pattern="###,###"/> 원						
+								</td>					
+							</tr>					
 						</c:forEach>
 						<tr>
 							<td colspan="5" align="right">
