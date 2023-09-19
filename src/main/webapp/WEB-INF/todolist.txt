@@ -18,6 +18,7 @@ prList=com.shopping.controller.product.ProductListController
 prInsert=com.shopping.controller.product.ProductInsertController
 prDetail=com.shopping.controller.product.ProductDetailController
 prUpdate=com.shopping.controller.product.ProductUpdateController
+prDelete=com.shopping.controller.product.ProductDeleteController
 # comment section
 cmList=com.shopping.controller.comment.CommentListController
 cmInsert=com.shopping.controller.comment.CommentInsertController

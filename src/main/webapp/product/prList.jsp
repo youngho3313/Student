@@ -120,7 +120,8 @@
 												href="<%=notWithFormTag%>prUpdate&pnum=${bean.pnum}${requestScope.pageInfo.flowParameter}">
 												수정
 											</a>
-											<a id="deleteAnchor" class="btn btn-info" href="#">
+											<a id="deleteAnchor" class="btn btn-info" 
+											    href="<%=notWithFormTag%>prDelete&pnum=${bean.pnum}${requestScope.pageInfo.flowParameter}">
 												삭제
 											</a>
 										</div>
