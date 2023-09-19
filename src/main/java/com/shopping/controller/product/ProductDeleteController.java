@@ -17,6 +17,8 @@ public class ProductDeleteController extends SuperClass {
 		
 		try {
 			cnt = dao.DeleteData(pnum) ;
+			new ProductListController().doGet(request, response);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +17,16 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.shopping.controller.SuperController;
 
-// Frontcontroller.doProcess, .init에서 사용하는 메서드를 모아놓은 클래스입니다.
+// Frontcontroller.doProcess, .init, ProductDao에서 사용하는 메서드를 모아놓은 클래스입니다.
 public class MyUtility {
+	
+	public static String getCurrentTime() {
+		// ProductDao.DeleteData에서 사용합니다.
+		// 현재 시각을 문자열로 생성하여 반환합니다.
+		String pattern = "yyyy년 MM월 dd일 hh시 mm분 ss초";
+		return new SimpleDateFormat(pattern).format(new Date()) ;
+	}
+	
 	public static void deleteOldImageFile(String webPath, MultipartRequest mr) {
 		// Frontcontroller.doProcess에서 사용합니다.
 		// 상품 수정시 과거에 업로드했던 이미지를 웹 서버에서 삭제합니다.
@@ -135,6 +145,8 @@ public class MyUtility {
 		
 		return map;
 	}
+
+
 
 
 }

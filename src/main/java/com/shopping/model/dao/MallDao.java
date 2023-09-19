@@ -245,7 +245,7 @@ public class MallDao extends SuperDao {
 		
 		
 		// step05 : 해당 회원의 적립포인트 변경하기 
-		sql = " update members set mpoin = mpoint + ?  " ;
+		sql = " update members set mpoint = mpoint + ?  " ;
 		sql += " where id = ? " ;	
 		pstmt = conn.prepareStatement(sql); 
 		pstmt.setInt(1, totalPoint); // 적립할 포인트

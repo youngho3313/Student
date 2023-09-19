@@ -88,7 +88,7 @@
 								<li><a class="dropdown-item" href="#">정보 수정</a></li>
 								<li><a class="dropdown-item" href="<%=notWithFormTag%>meLogout">로그 아웃</a></li>
 								<li><a class="dropdown-item" href="<%=notWithFormTag%>meDetail&id=${sessionScope.loginfo.id}">상세 보기</a></li>
-								<li><a class="dropdown-item" href="#">탈퇴하기</a></li>
+								<li><a class="dropdown-item" href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}">탈퇴하기</a></li>
 							</c:if>
 							<c:if test="${whologin eq 2}">
 								<li><a class="dropdown-item" href="<%=notWithFormTag%>meList">목록 보기</a></li>

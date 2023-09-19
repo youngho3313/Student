@@ -7,9 +7,47 @@ import java.util.List;
 
 import com.shopping.model.bean.Product;
 import com.shopping.model.mall.CartItem;
+import com.shopping.utility.MyUtility;
 import com.shopping.utility.Paging;
 
 public class ProductDao extends SuperDao{
+	
+	public int DeleteData(int pnum) throws Exception {
+		// ProductDeleteController.doGet에서 사용합니다.
+		// 상품 번호를 이용하여 해당 상품을 삭제합니다.
+		String sql = "" ;
+		PreparedStatement pstmt = null;
+		int cnt = -1 ;
+		
+		Product bean = this.GetDataByPk(pnum) ;
+		
+		conn = super.getConnection();
+		conn.setAutoCommit(false); // 자동 커밋 기능을 잠깐 끄기
+
+		String remark = MyUtility.getCurrentTime() + bean.getName() + "(상품번호 : " + pnum + "번) 상품이 삭제 되었습니다." ; // 지금 라떼(상품번호 : 3번)상품이 삭제되었습니다.
+		
+		// step01 : 주문 상세 테이블의 비고(remark) 칼럼에 히스토리 남기기
+		sql = " update orderdetails set remark = ? where pnum = ? " ;
+		pstmt = conn.prepareStatement(sql) ;
+		pstmt.setString(1, remark);
+		pstmt.setInt(2, pnum);
+		cnt = pstmt.executeUpdate() ;
+		if(pstmt!=null) {pstmt.close();}
+		
+		// step02 : 상품 테이블에서 해당 상품번호와 관련된 행 삭제하기
+		sql = " delete from products where pnum = ? " ;
+		pstmt = conn.prepareStatement(sql) ;
+		pstmt.setInt(1, pnum);
+		cnt = pstmt.executeUpdate() ;
+		
+		conn.commit(); // 일괄적으로 커밋
+		
+		if(pstmt!=null) {pstmt.close();}
+		if(conn!=null) {conn.close();}
+		
+		return cnt;
+	}
+
 	public int GetMileagePoint(Integer pnum) throws Exception {
 		// MallDao에서 사용
 		int point = 0;
@@ -291,7 +329,6 @@ public class ProductDao extends SuperDao{
 		return lists;
 	}
 	
-	
 	private Product getBeanData(ResultSet rs) throws Exception{
 		// ResultSet( : rs) 정보를 Bean으로 만들어서 반환해 줍니다.
 		Product bean = new Product();
@@ -315,62 +352,9 @@ public class ProductDao extends SuperDao{
 		
 		return bean;
 	}
-
-
-	public Product getDataByPk02(int pnum) {
-		// 해당 상품 번호에 맞는 상품 Bean을 반환합니다.
-		if(pnum == 1) {
-			return new Product(1, "진라면", "농심", "jinramen.png", "zoompic_3.jpg", "zoompic_1.jpg", 30, 1900,
-					"ramen", "인기상품입니다. 추천합니다. 맛있습니다.", 90, "2023/05/05");
-		}else if(pnum == 2) {
-			return new Product(2, "신라면", "농심", "sinramen.png", "zoompic_3.jpg", null, 30, 2900,
-					"ramen", "인기상품입니다.", 90, "2023/05/05");
-		}else {
-			return new Product(3, "짜파게티", "농심", "chapagetti.png", null, null, 30, 3900,
-					"ramen", "인기상품입니다.", 90, "2023/05/05");
-		}
-	}
 	
-	public Product getDataByPk(Integer pnum) {
-		Product bean = new Product(pnum, "진라면", "농심", "jinramen.png", null, null, 30, 1900,
-				"ramen", "인기상품입니다.", 90, "2023/05/05");
-		return bean;
-	}
+
 	
-	public List<Product> getDataList(){
-		List<Product> lists = new ArrayList<Product>() ;
-		
-		lists.add(new Product(1, "진라면", "농심", "jinramen.png", "zoompic_3.jpg", "zoompic_1.jpg", 30, 1900,
-				"ramen", "인기상품입니다. 추천합니다. 맛있습니다.", 90, "2023/05/05"));
-		lists.add(new Product(2, "신라면", "농심", "sinramen.png", "zoompic_3.jpg", null, 30, 1900,
-				"ramen", "인기상품입니다.", 90, "2023/05/05"));
-		lists.add(new Product(3, "짜파게티", "농심", "chapagetti.png", null, null, 30, 1900,
-				"ramen", "인기상품입니다.", 90, "2023/05/05"));
-		lists.add(new Product(4, "불닭면", "농심", "buldakmen.png", null, null, 30, 1900,
-				"ramen", "인기상품입니다.", 90, "2023/05/05"));
-		lists.add(new Product(5, "진짬뽕", "농심", "jinchampon.png", null, null, 30, 1900,
-				"ramen", "인기상품입니다.", 90, "2023/05/05"));
-		lists.add(new Product(6, "안성탕면", "농심", "ansung.png", null, null, 30, 1900,
-				"ramen", "인기상품입니다.", 90, "2023/05/05"));
-		lists.add(new Product(7, "너구리", "농심", "noguri.png", null, null, 30, 1900,
-				"ramen", "인기상품입니다.", 90, "2023/05/05"));
-		
-		return lists ;
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	
