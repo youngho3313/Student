@@ -55,6 +55,14 @@
 	<style type="text/css">
 		.alert-dismissible{margin: 10px;}
 	</style>
+	<script type="text/javascript">
+		
+		if(sessionScope.confirmMessage!=null){
+			var returnValue = confirm('컨펌창입니다? 내가 보이나요?');
+		}
+	
+		
+	</script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -162,5 +170,10 @@
 	</c:if>
 	<%-- 보여준 Alert Box를 session 영역에서 제거합니다. --%>
 	<c:remove var="alertMessage" scope="session"/> 
+	
+	
+	
+	
+	
 </body>
 </html>

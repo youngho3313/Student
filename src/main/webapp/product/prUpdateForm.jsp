@@ -33,7 +33,6 @@
 			/* 이전에 선택했던 카테고리 정보가 자동으로 선택되어 있도록 합니다. */
 			var category = '${requestScope.bean.category}';
 			/* alert(category); */
-			
 			var optionList = $('#category option');
 			optionList.each(function(){
 				console.log($(this).val());
@@ -41,6 +40,8 @@
 					$('option[value="' + category + '"]').attr('selected', true);
 				}
 			});
+			
+			
 		});
 		function validCheck(){
 			
